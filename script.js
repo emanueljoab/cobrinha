@@ -219,20 +219,20 @@ document.addEventListener('keydown', function(event) {
     // Lógica para definir a cor quando a tecla é pressionada
     if (event.key === 'ArrowUp' && direcaoAnterior !== 'baixo') {
         direcao = 'cima';
-        setas[0].style.backgroundColor = 'white';
-        setas[0].style.color = 'black';
-    } else if (event.key === 'ArrowDown' && direcaoAnterior !== 'cima') {
-        direcao = 'baixo';
-        setas[3].style.backgroundColor = 'white';
-        setas[3].style.color = 'black';
-    } else if (event.key === 'ArrowLeft' && direcaoAnterior !== 'direita') {
-        direcao = 'esquerda';
         setas[1].style.backgroundColor = 'white';
         setas[1].style.color = 'black';
+    } else if (event.key === 'ArrowDown' && direcaoAnterior !== 'cima') {
+        direcao = 'baixo';
+        setas[7].style.backgroundColor = 'white';
+        setas[7].style.color = 'black';
+    } else if (event.key === 'ArrowLeft' && direcaoAnterior !== 'direita') {
+        direcao = 'esquerda';
+        setas[3].style.backgroundColor = 'white';
+        setas[3].style.color = 'black';
     } else if (event.key === 'ArrowRight' && direcaoAnterior !== 'esquerda') {
         direcao = 'direita';
-        setas[2].style.backgroundColor = 'white';
-        setas[2].style.color = 'black';
+        setas[5].style.backgroundColor = 'white';
+        setas[5].style.color = 'black';
     }
 });
 

@@ -58,12 +58,18 @@ body {
     transform: translate(-50%, -50%) skewX(-15deg);
 }
 
-
-#container-botoes {
-    display: flex;
-    flex-direction: column;
+#centralizar {
+    display: flex; /* Adicione esta linha para centralizar horizontalmente */
     justify-content: center;
     align-items: center;
+
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
 }
 
 .botoes {
@@ -89,62 +95,17 @@ body {
     background-color: white;
 }
 
-#linha-central {
-    display: flex;
-    justify-content: space-evenly;
-    width: 505px;
+.vazio {
+    border: none;
 }
 
-@media screen and (max-height: 900px) {
-    #canvas {
-        width: 400px;
-    }
-    #container-info {
-        width: 400px;
-    }
-    #info {
-        font-size: 0.8em;
-    }
-    #titulo {
-        font-size: 2.5em;
-    }
-    #subtitulo {
-        font-size: 2em;
-    }
-    .botoes {
-        width: 80px;
-        height: 80px;
-        font-size: 2em;
-    }
-    #linha-central {
-        width: 405px;
-    }
+.vazio:hover {
+    cursor: auto;
 }
 
-@media screen and (max-height: 750px) {
-    #canvas {
-        width: 300px;
-    }
-    #container-info {
-        width: 300px;
-    }
-    #info {
-        font-size: 0.6em;
-    }
-    #titulo {
-        font-size: 1.9em;
-    }
-    #subtitulo {
-        font-size: 1.5em;
-    }
-    .botoes {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5em;
-    }
-    #linha-central {
-        width: 305px;
-    }
+.vazio:active {
+    background-color: transparent;
+    
 }
 
 @media screen and (max-width: 550px) {
@@ -159,42 +120,35 @@ body {
     }
     #titulo {
         font-size: 2.5em;
+        width: 400px;
     }
     #subtitulo {
         font-size: 2em;
-    }
-    .botoes {
-        width: 80px;
-        height: 80px;
-        font-size: 2em;
-    }
-    #linha-central {
-        width: 405px;
     }
 }
 
 @media screen and (max-width: 450px) {
     #canvas {
-        width: 300px;
+        width: 280px;
     }
     #container-info {
-        width: 300px;
+        width: 200px;
     }
     #info {
         font-size: 0.6em;
     }
     #titulo {
         font-size: 1.9em;
+        width: 300px;
     }
     #subtitulo {
         font-size: 1.5em;
     }
     .botoes {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5em;
+        width: 95px;
+        height: 95px;
     }
-    #linha-central {
-        width: 305px;
+    .grid {
+        gap: 0;
     }
 }
