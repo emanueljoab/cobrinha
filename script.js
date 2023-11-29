@@ -208,8 +208,13 @@ function telaInicial() {
 }
 
 function mudarDirecao(novaDirecao) {
-    direcao = novaDirecao;
-    
+    // Verifica se a nova direção é válida com base na direção atual
+    if ((novaDirecao === 'cima' && direcao !== 'baixo') ||
+        (novaDirecao === 'baixo' && direcao !== 'cima') ||
+        (novaDirecao === 'esquerda' && direcao !== 'direita') ||
+        (novaDirecao === 'direita' && direcao !== 'esquerda')) {
+        direcao = novaDirecao;
+    }
 }
 
 telaInicial();
