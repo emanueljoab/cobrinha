@@ -2,6 +2,9 @@
 
 
 body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     font-family: 'Orbitron', sans-serif;
     background-color: black;
 }
@@ -9,18 +12,20 @@ body {
 #container {
     position: relative;
     text-align: center;
+    margin: 0 25px 25px 25px;
 }
 
 #canvas {
     border: 1px white solid;
 }
 
-#container-info {
+#container-pontuacao {
     display: flex;
     justify-content: space-between;
     width: 500px;
     text-align: center;
     margin: 0 auto;
+    height: 0px;
 }
 
 #score {
@@ -28,8 +33,9 @@ body {
     font-size: 2em;
 }
 
-#info{
+#melhor {
     color: white;
+    font-size: 1.2em;
 }
 
 #titulo {
@@ -112,12 +118,10 @@ body {
     #canvas {
         width: 400px;
     }
-    #container-info {
+    #container-pontuacao {
         width: 400px;
     }
-    #info {
-        font-size: 0.8em;
-    }
+
     #titulo {
         font-size: 2.5em;
         width: 400px;
@@ -131,11 +135,11 @@ body {
     #canvas {
         width: 280px;
     }
-    #container-info {
-        width: 200px;
+    #container-pontuacao {
+        width: 280px;
     }
-    #info {
-        font-size: 0.6em;
+    #melhor {
+        font-size: 1.1em;
     }
     #titulo {
         font-size: 1.9em;

@@ -1,10 +1,12 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const scoreDiv = document.getElementById('score');
-const infoDiv = document.getElementById('info');
+const melhorDiv = document.getElementById('melhor');
 const tituloDiv = document.getElementById('titulo');
 const subtituloDiv = document.getElementById('subtitulo');
 const setas = document.querySelectorAll('.botoes');
+
+let hiscore = localStorage.getItem('hiscore') || 0;
 
 const tamanhoQuadrado = 50;
 const numLinhas = 10;
@@ -69,6 +71,7 @@ function iniciarJogo() {
     campoMatriz[cobra.x][cobra.y] = 1; // Atribui o valor 1 à posição da cobra
 
     campoMatriz[cobra.corpo[0].x][cobra.corpo[0].y] = 3; // Atribui o valor 3 à posição do corpo
+    hiscore = localStorage.getItem('hiscore') || 0;
 
     // Inicializa a direção
     direcao = 'cima';
@@ -112,6 +115,9 @@ function andarCobra(novaDirecao) {
     if (cobra.x === comidaX && cobra.y === comidaY) {
         cobra.corpo.unshift(posicaoAnterior);
         score++;
+            if (score > hiscore) {
+                localStorage.setItem('hiscore', score);
+            }
         comida();
     } else {
         const ultimoSegmento = cobra.corpo.pop();
@@ -126,14 +132,20 @@ function andarCobra(novaDirecao) {
     for (let i = 0; i < cobra.corpo.length; i++) {
         campoMatriz[cobra.corpo[i].x][cobra.corpo[i].y] = 3;
     }
+    pontuacao();
+    desenharCampo();
 
     verificaColisao();
 }
 
-function posicaoCobra() {
+function pontuacao() {
+    hiscore = localStorage.getItem('hiscore') || 0;
     scoreDiv.innerHTML = `${score}`;
-    infoDiv.innerHTML = `X: ${cobra.x}, Y: ${cobra.y}`;
+    melhorDiv.innerHTML = `Melhor: ${hiscore}`;
     scoreDiv.style.opacity = 1;
+    if (score == 0) {
+        scoreDiv.style.opacity = 0;
+    }
     if (fimdejogo) {
         tituloDiv.innerHTML = 'GAME OVER';
         tituloDiv.style.display = 'block';
@@ -166,7 +178,7 @@ function jogo() {
     function iteracaoDoJogo() {
         if (!fimdejogo && !vitoria) {
             andarCobra(direcao);
-            posicaoCobra();
+            pontuacao();
             desenharCampo();
             if (score <= 4) {
                 setTimeout(iteracaoDoJogo, 500); // Agendando a próxima iteração
@@ -205,6 +217,10 @@ function telaInicial() {
 
     scoreDiv.innerHTML = `${score}`;
     scoreDiv.style.opacity = 0;
+
+    pontuacao();
+    tituloDiv.style.display = 'block';
+    subtituloDiv.style.display = 'block';
 }
 
 function mudarDirecao(novaDirecao) {
