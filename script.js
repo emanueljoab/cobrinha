@@ -5,6 +5,9 @@ const melhorDiv = document.getElementById('melhor');
 const tituloDiv = document.getElementById('titulo');
 const subtituloDiv = document.getElementById('subtitulo');
 const setas = document.querySelectorAll('.botoes');
+const ponto = new Audio('ponto.wav');
+const gameover = new Audio('gameover.wav');
+const win = new Audio('win.wav');
 
 let hiscore = localStorage.getItem('hiscore') || 0;
 
@@ -115,6 +118,7 @@ function andarCobra(novaDirecao) {
     if (cobra.x === comidaX && cobra.y === comidaY) {
         cobra.corpo.unshift(posicaoAnterior);
         score++;
+        ponto.play();
             if (score > hiscore) {
                 localStorage.setItem('hiscore', score);
             }
@@ -147,12 +151,14 @@ function pontuacao() {
         scoreDiv.style.opacity = 0;
     }
     if (fimdejogo) {
+        gameover.play();
         tituloDiv.innerHTML = 'GAME OVER';
         tituloDiv.style.display = 'block';
         tituloDiv.style.color = 'white';
         subtituloDiv.innerHTML = 'Reiniciar';
         subtituloDiv.style.display = 'block';
     } else if (vitoria) {
+        win.play();
         tituloDiv.innerHTML = 'VENCEU!';
         tituloDiv.style.display = 'block';
         tituloDiv.style.color = 'green';
